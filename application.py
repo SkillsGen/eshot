@@ -188,7 +188,7 @@ def send_eshot_task(self, eshot_params, unsubscribe_url):
     counter = 0    
     for recipient in recipient_list:
         if recipient["id"] not in dont_send_list:
-            print(recipient["id"])
+       n     print(recipient["id"])
             print(recipient["email"])
             
             obf_id = obfuscate_id(recipient["id"])            
@@ -475,6 +475,9 @@ def send_progress():
     task_id = request.form.get("task_id")
     print(task_id)
     task = send_eshot_task.AsyncResult(task_id)
+    
+    print(task.state)
+    
     if task.state == 'PENDING':
         response = {
             'state':   task.state,
